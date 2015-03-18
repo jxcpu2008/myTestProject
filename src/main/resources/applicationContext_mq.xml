@@ -9,6 +9,16 @@
 	
 	<context:component-scan base-package="com.xgd.jms" />
 	
+	<!-- load the redis.properties file -->
+	<bean id="propertyConfigurer" class="org.springframework.context.support.PropertySourcesPlaceholderConfigurer">
+		<property name="ignoreUnresolvablePlaceholders" value="true"/>
+		<property name="locations">
+			<list>
+            	<value>classpath:redis.properties</value>
+          	</list>
+        </property>
+	</bean>
+	
 	<!-- Spring提供的JMS工具类，它可以进行消息发送、接收等 -->  
     <bean id="jmsTemplate" class="org.springframework.jms.core.JmsTemplate">  
         <!-- 这个connectionFactory对应的是我们定义的Spring提供的那个ConnectionFactory对象 -->  
